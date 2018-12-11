@@ -6,7 +6,7 @@ Created on Dec 11, 2018
 from flask import  session, jsonify,Blueprint,request
 from snnusdk import Library,get_borrow_info
 from .handle import error_hanlder
-import snnusdk
+from snnusdk.exceptions import AuthenticationError
 
 lib_bp = Blueprint('lib', __name__)
 
@@ -163,8 +163,8 @@ def login():
         pwd=request.args.get('password2')
         lib=Library(user,pwd)
         if lib.verify:
-            session['username2'] = '41612164'
-            session['password2'] = 'zq201651'
+            session['username2'] = user
+            session['password2'] = pwd
         return jsonify({
                     'status':200,
                     'msg':'登录成功',

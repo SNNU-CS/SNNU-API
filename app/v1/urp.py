@@ -166,8 +166,8 @@ def login():
         u=Urp(user,pwd)
         u.login()
         if u.verify:
-            session['username'] = '41612164'
-            session['password'] = 'zq201651'
+            session['username'] = user
+            session['password'] = pwd
         return jsonify({
                     'status':200,
                     'msg':'登录成功',
